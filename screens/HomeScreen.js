@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import ChecklistScreen from "./ChecklistScreen";
 
 // Individual Tab Screens
 function PlannerScreen() {
@@ -19,13 +20,13 @@ function PlannerScreen() {
     );
   }
   
-  function ChecklistScreen() {
-    return (
-      <View style={styles.screenContainer}>
-        <Text style={styles.screenText}>Checklist Screen</Text>
-      </View>
-    );
-  }
+  // function ChecklistScreen() {
+  //   return (
+  //     <View style={styles.screenContainer}>
+  //       <Text style={styles.screenText}>Checklist Screen</Text>
+  //     </View>
+  //   );
+  // }
 
   // Logout Button at Top-Right
 function LogoutButton({ navigation }) {

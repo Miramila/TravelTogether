@@ -1,6 +1,7 @@
 {
   "name": "traveltogether",
   "version": "1.0.0",
+  "homepage": "https://miramila.github.io/TravelTogether/",
   "main": "index.js",
   "scripts": {
     "start": "expo start",

@@ -7,6 +7,11 @@ import store from './app/store';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import ChecklistScreen from './screens/ChecklistScreen';
+import TripDetailScreen from './screens/TripDetailScreen'
+import TripSetupScreen from './screens/TripSetupScreen';
+import PlannerScreen from './screens/PlannerScreen';
+import AddInfoScreen from './screens/AddInfoScreen';
+import HomeTabs from './screens/HomeScreen';
 
 
 export default function App() {
@@ -20,6 +25,15 @@ export default function App() {
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Checklist" component={ChecklistScreen} />
+          <Stack.Screen name="TripSetup" component={TripSetupScreen} />
+          <Stack.Screen name="Planner" component={PlannerScreen} />
+          <Stack.Screen
+          name="HomeTabs"
+          component={HomeTabs}
+          options={{ headerShown: false }}
+        />
+          <Stack.Screen name="TripDetail" component={TripDetailScreen}  />
+          <Stack.Screen name="AddInfo" component={AddInfoScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

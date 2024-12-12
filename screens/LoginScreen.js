@@ -1,12 +1,30 @@
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, Image, Pressable } from 'react-native';
 import { signIn, signUp } from '../AuthManager';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkHasTrips } from '../features/tripSlice';
 
 function SigninBox({navigation}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
+   const dispatch = useDispatch();
+
+    const handleLogin = async () => {
+      try {
+        await signIn(email, password);
+        const result = await dispatch(checkHasTrips()).unwrap();
+        if (result) {
+          navigation.replace('HomeTabs', {
+            screen: 'Planner',
+          });
+        } else {
+          navigation.replace('TripSetup');
+        }
+      } catch (error) {
+        Alert.alert('Login Error', error.message, [{ text: 'OK' }]);
+      }
+    };
+
     return (
       <View style={styles.loginContainer}>
         <View style={styles.loginRow}>
@@ -44,8 +62,7 @@ function SigninBox({navigation}) {
           <Pressable
           style={styles.redButton}
             onPress={ async () => {
-              await signIn(email, password);
-              navigation.navigate("Home");
+              handleLogin();
             }}
           >
             <Text style={styles.buttonText}>Sign In</Text>
@@ -114,7 +131,7 @@ function SignupBox({navigation}) {
             onPress={async () => {
               try {
                 await signUp(displayName, email, password);
-                navigation.navigate("Home");
+                navigation.navigate("TripSetup");
               } catch(error) {
                 Alert.alert("Sign Up Error", error.message, [{ text: "OK" }])
               }
@@ -128,9 +145,9 @@ function SignupBox({navigation}) {
 }
 
 
-
 function LoginScreen({navigation}) {
     const [loginMode, setLoginMode] = useState(true);
+
   return (
     <View style={styles.container}>
         <Image 

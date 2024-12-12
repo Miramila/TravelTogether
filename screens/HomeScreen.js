@@ -1,16 +1,17 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import PlannerScreen from "./PlannerScreen"
 import ChecklistScreen from "./ChecklistScreen";
 
 // Individual Tab Screens
-function PlannerScreen() {
-    return (
-      <View style={styles.screenContainer}>
-        <Text style={styles.screenText}>Planner Screen</Text>
-      </View>
-    );
-  }
+// function PlannerScreen() {
+//     return (
+//       <View style={styles.screenContainer}>
+//         <Text style={styles.screenText}>Planner Screen</Text>
+//       </View>
+//     );
+//   }
   
   function WalletScreen() {
     return (
@@ -70,7 +71,7 @@ export default function HomeTabs({ navigation }) {
             tabBarInactiveTintColor: 'gray',
           })}
         >
-          <Tab.Screen name="Planner" component={PlannerScreen} />
+         <Tab.Screen name="Planner" component={PlannerScreen} />
           <Tab.Screen name="Wallet" component={WalletScreen} />
           <Tab.Screen name="Checklist" component={ChecklistScreen} />
         </Tab.Navigator>
@@ -78,8 +79,6 @@ export default function HomeTabs({ navigation }) {
     );
   }
 
-
-  
 // function HomeScreen({ navigation }) {
 //   return (
 //     <View style={styles.container}>

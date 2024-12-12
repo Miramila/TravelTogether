@@ -21,6 +21,7 @@ const checklistSlice = createSlice({
   },
   reducers: {
     addChecklistItem(state, action) {
+      console.log("it's the add check list item")
       state.items.push(action.payload);
       addChecklistItemToFirebase(action.payload); // Sync with Firebase
     },

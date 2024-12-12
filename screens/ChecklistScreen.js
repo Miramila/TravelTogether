@@ -19,6 +19,7 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import { Checkbox } from 'react-native-paper';
 import { getAuthUser } from '../AuthManager'; // Import auth functions
+
 import { v4 as uuidv4 } from 'uuid';
 
 const ChecklistScreen = () => {

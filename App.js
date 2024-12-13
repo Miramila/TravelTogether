@@ -12,6 +12,7 @@ import TripSetupScreen from './screens/TripSetupScreen';
 import PlannerScreen from './screens/PlannerScreen';
 import AddInfoScreen from './screens/AddInfoScreen';
 import HomeTabs from './screens/HomeScreen';
+import WalletScreen from './screens/WalletScreen';
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Checklist" component={ChecklistScreen} />
+          <Stack.Screen name="Wallet" component={WalletScreen} />
           <Stack.Screen name="TripSetup" component={TripSetupScreen} />
           <Stack.Screen name="Planner" component={PlannerScreen} />
           <Stack.Screen

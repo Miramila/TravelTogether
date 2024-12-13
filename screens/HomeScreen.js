@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import PlannerScreen from "./PlannerScreen"
 import ChecklistScreen from "./ChecklistScreen";
+import WalletScreen from "./WalletScreen";
 
 // Individual Tab Screens
 // function PlannerScreen() {
@@ -13,13 +14,6 @@ import ChecklistScreen from "./ChecklistScreen";
 //     );
 //   }
   
-  function WalletScreen() {
-    return (
-      <View style={styles.screenContainer}>
-        <Text style={styles.screenText}>Wallet Screen</Text>
-      </View>
-    );
-  }
   
   // function ChecklistScreen() {
   //   return (

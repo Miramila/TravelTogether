@@ -34,7 +34,6 @@ export const fetchChecklistFromFirebase = async () => {
     }
   };
 
-// Delete an item from the checklist
 export const deleteChecklistItemFromFirebase = async (id) => {
   const docRef = doc(db, 'checklist', id);
   await deleteDoc(docRef);
@@ -127,4 +126,36 @@ export const hasTrips = async () => {
     console.error('Error checking trips:', error);
     throw error;
   }
+};
+
+export const fetchBudgetFromFirebase = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'budget'));
+    const budgetItems = [];
+    querySnapshot.forEach((doc) => {
+      budgetItems.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    console.log('Budget fetched from Firebase:', budgetItems);
+    return budgetItems;
+  } catch (error) {
+    console.error('Error fetching budget:', error);
+    throw error;
+  }
+}
+
+export const addBudgetItemToFirebase = async (item) => {
+  const docRef = doc(collection(db, "budget"), item.id);
+  await setDoc(docRef, {
+    ...item,
+  });
+  return { ...item, id: item.id };
+};
+
+export const deleteBudgetItemFromFirebase = async (id) => {
+  const docRef = doc(db, 'budget', id);
+  await deleteDoc(docRef);
+  console.log('Budget item deleted from Firebase:', id);
 };

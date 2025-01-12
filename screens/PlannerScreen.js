@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
-import { fetchTrips, deleteTripItem } from '../features/tripSlice'; // Import deleteTripItem action
+import { fetchTrips, deleteTripItem } from '../features/tripSlice'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { getAuthUser } from '../AuthManager';
@@ -46,6 +46,7 @@ const PlannerScreen = ({ route }) => {
       dispatch(fetchTrips(user.uid));
     }
   }, [dispatch, user]);
+
 
   return (
     <View style={styles.container}>

@@ -5,24 +5,6 @@ import PlannerScreen from "./PlannerScreen"
 import ChecklistScreen from "./ChecklistScreen";
 import WalletScreen from "./WalletScreen";
 
-// Individual Tab Screens
-// function PlannerScreen() {
-//     return (
-//       <View style={styles.screenContainer}>
-//         <Text style={styles.screenText}>Planner Screen</Text>
-//       </View>
-//     );
-//   }
-  
-  
-  // function ChecklistScreen() {
-  //   return (
-  //     <View style={styles.screenContainer}>
-  //       <Text style={styles.screenText}>Checklist Screen</Text>
-  //     </View>
-  //   );
-  // }
-
   // Logout Button at Top-Right
 function LogoutButton({ navigation }) {
     return (
@@ -102,14 +84,14 @@ export default function HomeTabs({ navigation }) {
 const styles = StyleSheet.create({
     logoutButton: {
       position: 'absolute',
-      top: 20,
+      top: 50,
       right: 20,
       zIndex: 1,
     },
     screenContainer: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     screenText: {
       fontSize: 18,

@@ -5,6 +5,7 @@ import {
   hasTrips,
   updateTripItemInFirebase,
   deleteTripItemFromFirebase,
+  deleteTripActivityItemFromFirebase
 } from '../firebase';
 
 export const fetchTrips = createAsyncThunk('trips/fetchTrips', async () => {
@@ -31,8 +32,6 @@ const tripsSlice = createSlice({
         addTripItemToFirebase(action.payload);
       },
       updateTripInfo(state, action){
-        console.log("I want to update the trip information")
-        console.log("the action is", action)
         const {trip, type, formData} = action.payload
         updateTripItemInFirebase(trip, type, formData)
       },
@@ -41,10 +40,14 @@ const tripsSlice = createSlice({
         deleteTripItemFromFirebase(action.payload);
       },
 
-    //   setChecklist(state, action) {
-    //     state.items = action.payload;
-    //   },
-    },
+      deleteTripActivityItem(state, action) {
+        const {trip, index} = action.payload
+        deleteTripActivityItemFromFirebase(trip, index)
+
+      }
+
+
+  },
     extraReducers: (builder) => {
       builder
         .addCase(fetchTrips.pending, (state) => {
@@ -59,13 +62,13 @@ const tripsSlice = createSlice({
           state.loading = false;
         })
         .addCase(checkHasTrips.fulfilled, (state, action) => {
-          state.hasTrips = action.payload; // Set the result of hasTrips
-          state.isInitialized = true; // Mark initialization as complete
+          state.hasTrips = action.payload; 
+          state.isInitialized = true; 
         });
         ;
     },
   });
 
 
-export const {addTripItem, updateTripInfo, deleteTripItem}= tripsSlice.actions;
+export const {addTripItem, updateTripInfo, deleteTripItem, deleteTripActivityItem}= tripsSlice.actions;
 export default tripsSlice.reducer;

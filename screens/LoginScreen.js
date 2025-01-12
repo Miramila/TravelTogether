@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, Image, Pressable } from 'react-native';
 import { signIn, signUp } from '../AuthManager';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkHasTrips } from '../features/tripSlice';
 
 function SigninBox({navigation}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-   const dispatch = useDispatch();
+    const [email, setEmail] = useState('test@example.com');
+    const [password, setPassword] = useState('123456');
+    const dispatch = useDispatch();
 
     const handleLogin = async () => {
       try {
@@ -24,6 +24,10 @@ function SigninBox({navigation}) {
         Alert.alert('Login Error', error.message, [{ text: 'OK' }]);
       }
     };
+
+    useEffect(() =>{
+      handleLogin()
+    }, [])
 
     return (
       <View style={styles.loginContainer}>

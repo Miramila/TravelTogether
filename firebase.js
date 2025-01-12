@@ -1,5 +1,5 @@
 import { initializeApp, getApps } from 'firebase/app';
-import { getFirestore, doc, getDocs, setDoc, collection, query, addDoc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDocs, setDoc, collection, deleteDoc, updateDoc } from 'firebase/firestore';
 import { firebaseConfig } from './Secrets';
 
 let app;
@@ -81,7 +81,6 @@ export const updateTripItemInFirebase = async (trip, type, formData) => {
   } else {
     throw new Error('Invalid update type');
   }
-
   // Update the document in Firebase
   try {
     await updateDoc(docRef, updates);
@@ -90,14 +89,18 @@ export const updateTripItemInFirebase = async (trip, type, formData) => {
     console.error('Error updating trip:', error);
     throw error;
   }
- 
 };
 
 export const deleteTripItemFromFirebase = async (id) => {
-    const docRef = doc(db, 'trip', id);
+    const docRef = doc(db, 'trips', id);
     await deleteDoc(docRef);
     console.log('Trip deleted from Firebase:', id);
+}
 
+export const deleteTripActivityItemFromFirebase = async (trip, id) =>{
+  const docRef = doc(db, 'trips', trip.id); 
+  const updates = {touristAttractions : trip.touristAttractions.filter((_, i) => i !== id)};
+  await updateDoc(docRef, updates);
 }
 
 export const fetchTripsFromFirebase = async () => {
